@@ -1,31 +1,48 @@
 <template>
   <div>
     <v-container class="grey lighten-5">
-      <v-row no-gutters>
-        <v-col cols="4"></v-col>
-        <v-col cols="12" lg="4">
-          <v-card class="pa-2 text-center">
-            <v-card-title><h1>Agéndame</h1></v-card-title><br />
-            <v-card-subtitle><h1>Iniciar sesión</h1></v-card-subtitle>
-            <v-card-text
-              ><div>
-                <v-text-field
-                  label="Ingrese email"
-                  hide-details="auto"
-                ></v-text-field>
-                <v-text-field
-                  type="password"
-                  label="Ingrese Contraseña"
-                ></v-text-field></div
-            ></v-card-text>
-            <v-card-actions
-              ><v-btn color="success" elevation="2" outlined block
-                >Iniciar sesión</v-btn
-              ></v-card-actions
-            >
-          </v-card>
-        </v-col>
-      </v-row>
+      <div class="content">
+        <v-row no-gutters>
+          <v-col cols="4"></v-col>
+          <v-col cols="12" lg="4">
+            <div class="card">
+              <v-card class="pa-2 text-center">
+                <div class="card-content">
+                  <v-card-title><h1>Agéndame</h1></v-card-title><br />
+                  <v-card-subtitle><h1>Iniciar sesión</h1></v-card-subtitle>
+                  <v-card-text
+                    ><div class="form">
+                      <v-text-field
+                        v-model="form.email"
+                        label="Correo electronico"
+                        hide-details="auto"
+                      ></v-text-field>
+                      <v-text-field
+                        v-model="form.password"
+                        type="password"
+                        label="Contraseña"
+                      ></v-text-field></div
+                  ></v-card-text>
+                  <v-card-actions
+                    ><v-btn
+                      @click="login"
+                      color="success"
+                      elevation="2"
+                      outlined
+                      block
+                      >Iniciar sesión</v-btn
+                    ></v-card-actions
+                  ><v-card-text
+                    ><div class="text-overline mt-10">
+                      No tienes cuenta?  <a>Registrate</a> 
+                    </div></v-card-text
+                  >
+                </div>
+              </v-card>
+            </div>
+          </v-col>
+        </v-row>
+      </div>
     </v-container>
   </div>
 </template>
@@ -33,6 +50,26 @@
 <script>
 export default {
   name: "Auth",
-  data: () => ({}),
+  data: () => ({
+    form: {
+      email: "",
+      password: "",
+    },
+  }),
+  methods: {
+    login() {
+      let payload = this.form;
+      this.$store.dispatch("actionPostLogin", payload);
+    },
+  },
 };
 </script>
+
+<style scoped>
+.content {
+  padding-top: 5rem;
+}
+.card-content {
+  padding: 2rem 0 3rem 0;
+}
+</style>
