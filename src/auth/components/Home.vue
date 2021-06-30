@@ -9,18 +9,19 @@
               <v-card class="pa-2 text-center">
                 <div class="card-content">
                   <v-card-title><h1>Agéndame</h1></v-card-title><br />
-                  <v-card-subtitle><h1>Reserva una hora en 3 pasos</h1></v-card-subtitle>
-                  <v-card-text
-                    ><div class="form">
-                      </div
-                  ></v-card-text>
-                  <v-card-actions
-                    ></v-card-actions
-                  ><v-card-text
-                    ><div class="text-overline mt-10">
-                      Tienes cuenta?  <a>Inicia sesión</a> 
-                    </div></v-card-text
+                  <v-card-subtitle
+                    ><h1>Reserva una hora en 3 pasos</h1></v-card-subtitle
                   >
+                  <v-card-text><div class="form"></div></v-card-text>
+                  <v-card-actions
+                    ><v-btn @click="show_card(2)" block depressed color="success">
+                      Iniciar Sesión
+                    </v-btn></v-card-actions
+                  ><v-card-actions
+                    ><v-btn @click="show_card(3)" block depressed color="primary">
+                      Registrarse
+                    </v-btn></v-card-actions
+                  ><v-card-text></v-card-text>
                 </div>
               </v-card>
             </div>
@@ -34,9 +35,12 @@
 <script>
 export default {
   name: "Home",
-  data: () => ({
-  }),
+  data: () => ({}),
   methods: {
+    show_card(value) {
+      let index = value
+      this.$store.dispatch('showDynamicComponent', index)
+    }
   },
 };
 </script>
@@ -49,4 +53,3 @@ export default {
   padding: 2rem 0 3rem 0;
 }
 </style>
-
