@@ -34,7 +34,7 @@
                     ></v-card-actions
                   ><v-card-text
                     ><div class="text-overline mt-10">
-                      Tienes cuenta?  <a>Inicia sesión</a> 
+                      Tienes cuenta? <a @click="show_card(2)">Inicia sesión</a>
                     </div></v-card-text
                   >
                 </div>
@@ -60,6 +60,10 @@ export default {
     signUp() {
       let payload = this.form;
       this.$store.dispatch("actionPostSignUp", payload);
+    },
+    show_card(value) {
+      let index = value;
+      this.$store.dispatch("showDynamicComponent", index);
     },
   },
 };
