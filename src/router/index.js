@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import MainLayout from '../layout/MainLayout.vue'
-import { Auth } from '../auth/router'
+import { Auth } from '../init/router'
 
 Vue.use(VueRouter)
 

@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import Init from '../auth/components/Init.vue';
+import Init from '../init/components/Init.vue';
 export default {
   name: "TheAuth",
   components: {
