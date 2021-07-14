@@ -14,11 +14,21 @@
                   >
                   <v-card-text><div class="form"></div></v-card-text>
                   <v-card-actions
-                    ><v-btn @click="show_card(2)" block depressed color="success">
+                    ><v-btn
+                      @click="showComponent('log-in')"
+                      block
+                      depressed
+                      color="success"
+                    >
                       Iniciar Sesión
                     </v-btn></v-card-actions
                   ><v-card-actions
-                    ><v-btn @click="show_card(3)" block depressed color="primary">
+                    ><v-btn
+                      @click="showComponent('sign-up')"
+                      block
+                      depressed
+                      color="primary"
+                    >
                       Registrarse
                     </v-btn></v-card-actions
                   ><v-card-text></v-card-text>
@@ -35,13 +45,8 @@
 <script>
 export default {
   name: "Home",
+  inject: ["showComponent"],
   data: () => ({}),
-  methods: {
-    show_card(value) {
-      let index = value
-      this.$store.dispatch('showDynamicComponent', index)
-    }
-  },
 };
 </script>
 

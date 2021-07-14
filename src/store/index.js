@@ -8,15 +8,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     token: null,
-    show_index: null
   },
   mutations: {
     GET_TOKEN(state, data) { 
       state.token = data 
     },
-    SHOW_DYNAMIC_COMPONENT(state, data) { 
-      state.show_index = data 
-    }
   },
   actions: {
     actionPostLogin({ commit }, payload) {
@@ -31,10 +27,6 @@ export default new Vuex.Store({
       PostSignUp.then(res => {
         let user = res.data.user
       })
-    },
-    showDynamicComponent({ commit }, params) { 
-      let index = params 
-      commit('SHOW_DYNAMIC_COMPONENT', index)
     }
   },
   modules: {
