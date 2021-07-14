@@ -34,7 +34,7 @@
                     ></v-card-actions
                   ><v-card-text
                     ><div class="text-overline mt-10">
-                      No tienes cuenta? <a @click="show_card(3)">Registrate</a>
+                      No tienes cuenta? <a @click="showComponent('sign-up')">Registrate</a>
                     </div></v-card-text
                   >
                 </div>
@@ -50,6 +50,7 @@
 <script>
 export default {
   name: "Auth",
+  inject: ['showComponent'],
   data: () => ({
     form: {
       email: "",
@@ -60,10 +61,6 @@ export default {
     login() {
       let payload = this.form;
       this.$store.dispatch("actionPostLogin", payload);
-    },
-    show_card(value) {
-      let index = value;
-      this.$store.dispatch("showDynamicComponent", index);
     },
   },
 };
